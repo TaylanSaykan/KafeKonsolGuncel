@@ -61,7 +61,7 @@ namespace KafeKonsol
             var frmSiparis = new SiparisForm(db, siparis);
             frmSiparis.ShowDialog();
 
-            if (siparis.Durum !=SiparisDurum.Aktif)
+            if (siparis.Durum != SiparisDurum.Aktif)
             {
                 lviTiklanan.ImageKey = "bos";
             }
@@ -69,6 +69,18 @@ namespace KafeKonsol
 
         private void lvwMasalar_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+
+        }
+
+        private void tsmiGecmissiparisler_Click(object sender, EventArgs e)
+        {
+            new GecmisSiparislerForm(db).ShowDialog();
+
+        }
+
+        private void tsmiUrunler_Click(object sender, EventArgs e)
+        {
+            new UrunlerForm(db).ShowDialog();
 
         }
     }

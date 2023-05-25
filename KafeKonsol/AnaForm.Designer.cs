@@ -54,12 +54,14 @@
             tsmiUrunler.Name = "tsmiUrunler";
             tsmiUrunler.Size = new Size(71, 24);
             tsmiUrunler.Text = "Ürünler";
+            tsmiUrunler.Click += tsmiUrunler_Click;
             // 
             // tsmiGecmissiparisler
             // 
             tsmiGecmissiparisler.Name = "tsmiGecmissiparisler";
             tsmiGecmissiparisler.Size = new Size(136, 24);
             tsmiGecmissiparisler.Text = "Geçmiş Siparişler";
+            tsmiGecmissiparisler.Click += tsmiGecmissiparisler_Click;
             // 
             // lvwMasalar
             // 

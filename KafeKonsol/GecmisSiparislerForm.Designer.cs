@@ -29,103 +29,127 @@
         private void InitializeComponent()
         {
             splitContainer1 = new SplitContainer();
+            dgvSiparisler = new DataGridView();
             label1 = new Label();
+            dgvDetyalar = new DataGridView();
             label2 = new Label();
-            dataGridView1 = new DataGridView();
-            dataGridView2 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSiparisler).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDetyalar).BeginInit();
             SuspendLayout();
             // 
             // splitContainer1
             // 
             splitContainer1.Dock = DockStyle.Fill;
             splitContainer1.Location = new Point(0, 0);
+            splitContainer1.Margin = new Padding(3, 4, 3, 4);
             splitContainer1.Name = "splitContainer1";
             splitContainer1.Orientation = Orientation.Horizontal;
             // 
             // splitContainer1.Panel1
             // 
-            splitContainer1.Panel1.Controls.Add(dataGridView1);
+            splitContainer1.Panel1.Controls.Add(dgvSiparisler);
             splitContainer1.Panel1.Controls.Add(label1);
+            splitContainer1.Panel1.Paint += splitContainer1_Panel1_Paint;
             // 
             // splitContainer1.Panel2
             // 
-            splitContainer1.Panel2.Controls.Add(dataGridView2);
+            splitContainer1.Panel2.Controls.Add(dgvDetyalar);
             splitContainer1.Panel2.Controls.Add(label2);
-            splitContainer1.Size = new Size(819, 511);
-            splitContainer1.SplitterDistance = 255;
+            splitContainer1.Size = new Size(936, 681);
+            splitContainer1.SplitterDistance = 339;
+            splitContainer1.SplitterWidth = 5;
             splitContainer1.TabIndex = 22;
+            // 
+            // dgvSiparisler
+            // 
+            dgvSiparisler.AllowUserToAddRows = false;
+            dgvSiparisler.AllowUserToDeleteRows = false;
+            dgvSiparisler.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvSiparisler.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSiparisler.Location = new Point(14, 44);
+            dgvSiparisler.Margin = new Padding(3, 4, 3, 4);
+            dgvSiparisler.MultiSelect = false;
+            dgvSiparisler.Name = "dgvSiparisler";
+            dgvSiparisler.ReadOnly = true;
+            dgvSiparisler.RowHeadersVisible = false;
+            dgvSiparisler.RowHeadersWidth = 51;
+            dgvSiparisler.RowTemplate.Height = 25;
+            dgvSiparisler.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvSiparisler.Size = new Size(909, 276);
+            dgvSiparisler.TabIndex = 1;
+            dgvSiparisler.CellContentClick += dgvSiparisler_CellContentClick;
+            dgvSiparisler.SelectionChanged += dgvSiparisler_SelectionChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(12, 9);
+            label1.Location = new Point(14, 12);
             label1.Name = "label1";
-            label1.Size = new Size(81, 21);
+            label1.Size = new Size(100, 28);
             label1.TabIndex = 0;
             label1.Text = "Siparişler";
+            // 
+            // dgvDetyalar
+            // 
+            dgvDetyalar.AllowUserToAddRows = false;
+            dgvDetyalar.AllowUserToDeleteRows = false;
+            dgvDetyalar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvDetyalar.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDetyalar.Location = new Point(14, 44);
+            dgvDetyalar.Margin = new Padding(3, 4, 3, 4);
+            dgvDetyalar.MultiSelect = false;
+            dgvDetyalar.Name = "dgvDetyalar";
+            dgvDetyalar.ReadOnly = true;
+            dgvDetyalar.RowHeadersVisible = false;
+            dgvDetyalar.RowHeadersWidth = 51;
+            dgvDetyalar.RowTemplate.Height = 25;
+            dgvDetyalar.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvDetyalar.Size = new Size(909, 276);
+            dgvDetyalar.TabIndex = 1;
+            dgvDetyalar.CellContentClick += dgvDetyalar_CellContentClick;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(12, 9);
+            label2.Location = new Point(14, 12);
             label2.Name = "label2";
-            label2.Size = new Size(135, 21);
+            label2.Size = new Size(168, 28);
             label2.TabIndex = 0;
             label2.Text = "Sipariş Detayları";
             // 
-            // dataGridView1
-            // 
-            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 33);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(795, 208);
-            dataGridView1.TabIndex = 1;
-            // 
-            // dataGridView2
-            // 
-            dataGridView2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(12, 33);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowTemplate.Height = 25;
-            dataGridView2.Size = new Size(795, 207);
-            dataGridView2.TabIndex = 1;
-            // 
             // GecmisSiparislerForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(819, 511);
+            ClientSize = new Size(936, 681);
             Controls.Add(splitContainer1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "GecmisSiparislerForm";
             Text = "Geçmiş Siparişler";
+            Load += GecmisSiparislerForm_Load;
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel1.PerformLayout();
             splitContainer1.Panel2.ResumeLayout(false);
             splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSiparisler).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDetyalar).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private SplitContainer splitContainer1;
-        private DataGridView dataGridView1;
+        private DataGridView dgvSiparisler;
         private Label label1;
-        private DataGridView dataGridView2;
+        private DataGridView dgvDetyalar;
         private Label label2;
     }
 }
