@@ -18,6 +18,7 @@ namespace KafeKonsol
         public UrunlerForm(KafeVeri db)
         {
             _db = db;
+            //var liste = db.Urunler.Select(d);
             urunler = new BindingList<Urun>(db.Urunler);
             InitializeComponent();
             dgvUrunler.DataSource = urunler;
@@ -32,8 +33,17 @@ namespace KafeKonsol
                 return;
 
             }
-            Urun urun = new Urun() { UrunAd = ad, BirimFiyat = nudBirimFiyat.Value };
-            urunler.Add(urun);
+            if (btnEkle.Text == "EKLE")
+            {
+                Urun urun = new Urun() { UrunAd = ad, BirimFiyat = nudBirimFiyat.Value };
+                urunler.Add(urun);
+            }
+            else if (_duzenlenen != null)
+            {
+                _duzenlenen.UrunAd = ad;
+                _duzenlenen.BirimFiyat = nudBirimFiyat.Value; ;
+                urunler.ResetBindings();
+            }
         }
         Urun _duzenlenen;
         private void btnGuncelle_Click(object sender, EventArgs e)

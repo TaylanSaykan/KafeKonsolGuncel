@@ -7,6 +7,8 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,8 +20,22 @@ namespace KafeKonsol
         public AnaForm()
         {
             InitializeComponent();
-            OrnekUrunleriYukle();
+            VerileriYükle();
             MasalariYukle();
+        }
+
+        private void VerileriYükle()
+        {
+            try
+            {
+                string json = File.ReadAllText("veri.json");
+                db = JsonSerializer.Deserialize<KafeVeri>(json) ?? db; 
+
+            }
+            catch(Exception )
+            {
+                OrnekUrunleriYukle();
+            }
         }
 
         private void OrnekUrunleriYukle()
@@ -82,6 +98,17 @@ namespace KafeKonsol
         {
             new UrunlerForm(db).ShowDialog();
 
+        }
+
+        private void AnaForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            VerileriKaydet();
+        }
+
+        private void VerileriKaydet()
+        {
+            string json = JsonSerializer.Serialize(db);
+            File.WriteAllText("veri.jason", json);
         }
     }
 }

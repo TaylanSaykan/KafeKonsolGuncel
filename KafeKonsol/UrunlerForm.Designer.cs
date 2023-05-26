@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             label1 = new Label();
             label2 = new Label();
             nudBirimFiyat = new NumericUpDown();
@@ -36,6 +38,8 @@
             txtUrunaD = new TextBox();
             btnGuncelle = new Button();
             btnIptal = new Button();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)nudBirimFiyat).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvUrunler).BeginInit();
             SuspendLayout();
@@ -85,8 +89,8 @@
             // dgvUrunler
             // 
             dgvUrunler.AllowUserToAddRows = false;
-            dgvUrunler.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvUrunler.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUrunler.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2 });
             dgvUrunler.Location = new Point(14, 117);
             dgvUrunler.Margin = new Padding(3, 4, 3, 4);
             dgvUrunler.MultiSelect = false;
@@ -133,6 +137,28 @@
             btnIptal.UseVisualStyleBackColor = true;
             btnIptal.Click += btnIptal_Click;
             // 
+            // Column1
+            // 
+            Column1.DataPropertyName = "UrunAd";
+            dataGridViewCellStyle1.Format = "c2";
+            Column1.DefaultCellStyle = dataGridViewCellStyle1;
+            Column1.HeaderText = "Ürün Adı";
+            Column1.MinimumWidth = 6;
+            Column1.Name = "Column1";
+            Column1.ReadOnly = true;
+            Column1.Width = 125;
+            // 
+            // Column2
+            // 
+            Column2.DataPropertyName = "BırımFıyat";
+            dataGridViewCellStyle2.Format = "c2";
+            Column2.DefaultCellStyle = dataGridViewCellStyle2;
+            Column2.HeaderText = "Birim Fiyat";
+            Column2.MinimumWidth = 6;
+            Column2.Name = "Column2";
+            Column2.ReadOnly = true;
+            Column2.Width = 125;
+            // 
             // UrunlerForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -165,5 +191,7 @@
         private TextBox txtUrunaD;
         private Button btnGuncelle;
         private Button btnIptal;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
     }
 }
