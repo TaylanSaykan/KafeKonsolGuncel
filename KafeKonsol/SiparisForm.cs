@@ -14,6 +14,8 @@ namespace KafeKonsol
 {
     public partial class SiparisForm : Form
     {
+
+        public event EventHandler<MAsaTasiEventArgs>? MAsaTasi;
         private readonly KafeVeri _db;
         private readonly Siparis _siparis;
         private readonly BindingList<SiparisDetay> _siparisDetaylar;
@@ -40,6 +42,20 @@ namespace KafeKonsol
             lblMasaNo.Text = _siparis.MasaNo.ToString("00");
             lblOdemeTutarı.Text = _siparis.ToplamTutarTL;
             cboUrun.DataSource = _db.Urunler;
+            MasanolarıYukle();
+        }
+
+        private void MasanolarıYukle()
+        {
+            cboMasaNo.Items.Clear();
+
+            for (int i = 1; i < _db.MasaAdet; i++)
+            {
+                if (!_db.AktifSiparisler.Any(x => x.MasaNo == i))
+                {
+                    cboMasaNo.Items.Add(i);
+                } 
+            }
         }
 
         private void btnEkle_Click(object sender, EventArgs e)
@@ -95,6 +111,22 @@ namespace KafeKonsol
         private void button3_Click(object sender, EventArgs e)
         {
             MasayiKapat(SiparisDurum.Odendi, _siparis.ToplamTutar());
+
+        }
+
+        private void btnMasaTasi_Click(object sender, EventArgs e)
+        {
+            if (cboMasaNo.SelectedIndex == -1) return;
+            int eskiMasaNO = _siparis.MasaNo;
+            int hedefMasaNo = (int)cboMasaNo.SelectedItem;
+            _siparis.MasaNo = hedefMasaNo;
+            Guncelle();
+
+            if (MAsaTasi != null)
+            {
+                var args = new MAsaTasiEventArgs(eskiMasaNO, hedefMasaNo);
+                MAsaTasi(this, args);
+            }
 
         }
     }

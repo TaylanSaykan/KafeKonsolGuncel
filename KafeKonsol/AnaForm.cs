@@ -52,7 +52,7 @@ namespace KafeKonsol
             {
                 var lvi = new ListViewItem($"Masa{i}");
                 lvi.Tag = i;
-                lvi.ImageKey = "bos";
+                lvi.ImageKey = db.AktifSiparisler.Any(x=> x.MasaNo==i)?"dolu":"bos";
                 lvwMasalar.Items.Add(lvi);
             }
         }
@@ -75,11 +75,36 @@ namespace KafeKonsol
             }
 
             var frmSiparis = new SiparisForm(db, siparis);
+            frmSiparis.MAsaTasi += FrmSiparis_MasaTasindi;
             frmSiparis.ShowDialog();
 
             if (siparis.Durum != SiparisDurum.Aktif)
             {
                 lviTiklanan.ImageKey = "bos";
+            }
+        }
+
+        private void FrmSiparis_MasaTasindi(object? sender, MAsaTasiEventArgs e)
+        {
+            foreach (ListViewItem item in lvwMasalar.Items)
+            {
+                int masaNo = (int)item.Tag;
+
+                if (masaNo == e.EskiMasaNo)
+                {
+                    item.ImageKey = "bos";
+                    item.Selected = false;
+                }
+
+                if (masaNo == e.YeniMasaNo)
+                {
+                    item.ImageKey = "dolu";
+                    item.Selected = true;
+
+                }
+
+
+
             }
         }
 
